@@ -1,0 +1,14 @@
+h1 {
+  color: blue;
+}
+
+nav {
+  background-color: gray;
+  padding: 10px;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+  margin-right: 10px;
+}
