@@ -1,0 +1,7 @@
+
+  <router-outlet></router-outlet>
+
+
+<div *ngFor="let user of users">
+  <app-user-card [user]="user" (userDeleted)="deleteUser($event)"></app-user-card>
+</div>
