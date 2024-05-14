@@ -1,16 +1,14 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Inject } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UsersListComponent } from './components/users-list/users-list.component';
-import {Routes,RouterModule} from "@angular/router";
+import {RouterModule} from "@angular/router";
 import { HttpClientModule } from '@angular/common/http';
 import { UserCardComponent } from './components/user-card/user-card.component';
 
-const appRoutes: Routes =[
-  {path:'users', component: UsersListComponent}
-]
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,10 +18,11 @@ const appRoutes: Routes =[
   imports: [
     BrowserModule,
     AppRoutingModule,
-    RouterModule.forRoot(appRoutes),
+    RouterModule,
     HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

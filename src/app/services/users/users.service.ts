@@ -1,17 +1,27 @@
 import { Injectable} from '@angular/core';
-import  {User} from "./models/user.models";
+import  {User} from "../../models/user.models";
+import {BehaviorSubject, Observable} from "rxjs";
+import {UsersApiService} from "../User-Api/users-api.service";
 
 @Injectable({
   providedIn: 'root'
 })
 export class UsersService {
-  users: User[] = []; // свойство для хранения пользователей
+  private userSubject = new BehaviorSubject<User[]>([]);
+  public users$: Observable<User[]> = this.userSubject.asObservable()
 
-  constructor() { }
+  constructor(private UsersApiService: UsersApiService ) { }
 
-  // метод для удаления пользователя
+
   deleteUser(userId: number): void {
-    this.users = this.users.filter(user => user.id !== userId);
+    this.userSubject.next(this.userSubject.value.filter(user => user.id !== userId));
+  }
+  loadUsers(): void {
+    this.UsersApiService.getUsers().subscribe(
+      (data) => {
+        this.userSubject.next(data)
+      }
+    )
   }
 }
 

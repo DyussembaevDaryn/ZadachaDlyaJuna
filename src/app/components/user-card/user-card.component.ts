@@ -1,5 +1,5 @@
 import { Component,Input,Output,EventEmitter } from '@angular/core';
-import  {User} from "../../services/users/models/user.models";
+import  {User} from "../../models/user.models";
 
 @Component({
   selector: 'app-user-card',
@@ -7,7 +7,7 @@ import  {User} from "../../services/users/models/user.models";
   styleUrls: ['./user-card.component.css']
 })
 export class UserCardComponent {
-  @Input() user!: User;
+  @Input({ required: true }) user!: User;
   @Output() userDeleted = new EventEmitter<number>(); // Выходной параметр события удаления
 
   deleteUser(): void {
