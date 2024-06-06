@@ -1,12 +1,13 @@
 import { NgModule, Inject } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { AppRoutingModule } from '../routing/app-routing.module';
-import { AppComponent } from '../appcomponents/app.component';
-import { UsersListComponent } from '../components/users-list/users-list.component';
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { UsersListComponent } from './users/components/users-list/users-list.component';
 import {RouterModule} from "@angular/router";
 import { HttpClientModule } from '@angular/common/http';
-import { UserCardComponent } from '../components/user-card/user-card.component';
+import { UserCardComponent } from './users/components/user-card/user-card.component';
+import {API_URL} from "./users/tokens/injectionToken";
 
 
 @NgModule({
@@ -21,7 +22,9 @@ import { UserCardComponent } from '../components/user-card/user-card.component';
     RouterModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+  { provide: API_URL, useValue: 'https://jsonplaceholder.typicode.com/users' }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

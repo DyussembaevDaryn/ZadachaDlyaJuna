@@ -1,5 +1,7 @@
 import { Component,OnInit } from '@angular/core';
-import {UsersService} from "../../services/users/users.service";
+import {UsersService} from "../../services/users.service";
+
+
 
 @Component({
   selector: 'app-users-list',
@@ -10,6 +12,7 @@ import {UsersService} from "../../services/users/users.service";
 export class UsersListComponent implements OnInit {
 
   public readonly users$ = this.usersService.users$
+
 
   constructor(
     private usersService: UsersService
